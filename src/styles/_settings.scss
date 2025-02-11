@@ -1,60 +1,202 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@800&family=Josefin+Sans:wght@100&family=Nova+Round&display=swap');
 
-$font-1:'Nova Round',cursive;
-$font-2:'Dosis',sans-serif;
-$font-3:'Josefin Sans',sans-serif;
+// Fonts
+$font-1: 'Nova Round', cursive;
+$font-2: 'Dosis', sans-serif;
+$font-3: 'Josefin Sans', sans-serif;
 
-$color-1:#2a1d52;
-$color-2:#6C77F4;
-$color-3:rgb(99,164,233);
-$color-4:#4FEDD2;
-$color-5:#36D0EA;
-$white:#ddd;
-$black:#333;
+// Colors
+$color-1: #2a1d52;
+$color-2: #6C77F4;
+$color-3: rgb(99,164,233);
+$color-4: #4FEDD2;
+$color-5: #36D0EA;
+$white: #f5f5f5;
+$black: #333;
 
-$borderRadius:25px;
-$shadow:0 1px 3px #333;
-$minHeight:95vh;
+// Modern Design Variables
+$borderRadius: 2px;
+$shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+$minHeight: 100vh;
+$gradientBg: linear-gradient(135deg, $color-1, darken($color-1, 15%));
+$glassEffect: rgba(255, 255, 255, 0.08);
+$transition: all 0.3s ease;
 
-@mixin  verticalCenter {
+// Mixins
+@mixin verticalCenter {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-*{
+
+@mixin glassMorphism {
+    background: $glassEffect;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+// Reset
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-body{
-    margin: 1rem auto;
-    max-width: 1200px;
+
+body {
+    margin: 0;
+    max-width: 100%;
     font-family: $font-1;
     color: $black;
+    background: $white;
+    line-height: 1.6;
 }
-button{
+
+button {
     cursor: pointer;
+    border: none;
+    background: none;
+    transition: $transition;
 }
-li{
+
+li {
     list-style-type: none;
 }
-a{
+
+a {
     text-decoration: none;
     color: $black;
     cursor: pointer;
+    transition: $transition;
+    
+    &:visited {
+        color: $black;
+    }
+    
+    &:hover {
+        color: $color-2;
+    }
 }
-a:visited{
-    color: $black;
-}
-.home, .knowledges, .portFolio, .contact{
+
+// Layout
+.home, .knowledges, .portfolio, .contact {
     display: flex;
-    @media screen and (max-width:850px){
+    width: 100%;
+    min-height: $minHeight;
+    
+    @media screen and (max-width: 850px) {
         display: block !important;
     }
 }
-.homeContent, .knowledgesContent, .portFolioContent, .contactContent{
-    margin-left: .4rem;
-    @media screen and (max-width:850px){
-        margin-left: 0 !important;
+
+.homeContent, .knowledgesContent, .portfolioContent, .contactContent {
+    margin-left: 264px;
+    width: calc(100% - 264px);
+    background: $white;
+    position: relative;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background: linear-gradient(
+            to bottom,
+            transparent,
+            $color-5,
+            $color-4,
+            transparent
+        );
+        box-shadow: 0 0 15px rgba($color-5, 0.3);
     }
+
+    @media screen and (max-width: 850px) {
+        margin-left: 0 !important;
+        width: 100%;
+        
+        &::before {
+            display: none;
+        }
+    }
+}
+
+// Modern Scrollbar
+::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba($color-1, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: $color-5;
+    border-radius: 4px;
+    
+    &:hover {
+        background: $color-4;
+    }
+}
+
+// Selection
+::selection {
+    background: $color-4;
+    color: $white;
+}
+
+// Media Queries
+@media screen and (max-width: 850px) {
+    .homeContent, .knowledgesContent, .portfolioContent, .contactContent {
+        margin-left: 0 !important;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    body {
+        font-size: 0.9rem;
+    }
+    
+    .homeContent, .knowledgesContent, .portfolioContent, .contactContent {
+        padding: 1rem;
+    }
+}
+
+// Animation Keyframes
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Utility Classes
+.fadeIn {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.container {
+    padding: 1.5rem;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.glass {
+    @include glassMorphism;
+}
+
+.flex-center {
+    @include verticalCenter;
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, $color-4, $color-5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
