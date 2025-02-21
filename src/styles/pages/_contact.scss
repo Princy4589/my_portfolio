@@ -1,0 +1,204 @@
+.contact {
+    .contactContent {
+        background: linear-gradient(115deg, rgba($color-1, 0.97) 0%, rgba($color-1, 0.9) 100%);
+        min-height: $minHeight;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+
+        &:after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background: url('../../media/bigGates.jpg') no-repeat center/cover;
+            z-index: -1;
+            filter: brightness(20%);
+        }
+
+        .header {
+            text-align: center;
+            padding: 4rem 0 3rem;
+
+            h1 {
+                font-size: 4rem;
+                color: $color-5;
+                text-transform: uppercase;
+                letter-spacing: 0.3rem;
+                margin-bottom: 1rem;
+                font-family: $font-2;
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            }
+
+            h2 {
+                color: $color-4;
+                font-size: 1.8rem;
+                font-weight: 300;
+                font-family: $font-3;
+            }
+        }
+
+        .contactContainer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+
+            .contactBox {
+                background: rgba($color-1, 0.2);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba($color-5, 0.1);
+                padding: 3rem;
+                display: grid;
+                grid-template-columns: 1fr 1.5fr;
+                gap: 3rem;
+
+                .contactInfo {
+                    .infoItem {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 2.5rem;
+                        
+                        i {
+                            font-size: 1.8rem;
+                            color: $color-5;
+                            margin-right: 1.5rem;
+                        }
+
+                        .content {
+                            h3 {
+                                color: $color-4;
+                                font-size: 1.3rem;
+                                margin-bottom: 0.5rem;
+                            }
+
+                            p {
+                                color: $white;
+                                font-size: 1.1rem;
+                            }
+                        }
+                    }
+                }
+
+                .contactForm {
+                    .formGroup {
+                        margin-bottom: 1.5rem;
+
+                        input, textarea {
+                            width: 100%;
+                            background: rgba($white, 0.1);
+                            border: 1px solid rgba($color-5, 0.2);
+                            padding: 1rem;
+                            color: $white;
+                            font-size: 1rem;
+                            transition: all 0.3s ease;
+
+                            &:focus {
+                                outline: none;
+                                border-color: $color-5;
+                                background: rgba($white, 0.15);
+                            }
+
+                            &::placeholder {
+                                color: rgba($white, 0.7);
+                            }
+                        }
+
+                        textarea {
+                            min-height: 150px;
+                            resize: vertical;
+                        }
+                    }
+
+                    button {
+                        background: $color-5;
+                        color: $color-1;
+                        padding: 1rem 2rem;
+                        font-size: 1.1rem;
+                        border: none;
+                        transition: all 0.3s ease;
+
+                        i {
+                            margin-left: 0.5rem;
+                        }
+
+                        &:hover {
+                            background: $color-4;
+                            transform: translateY(-3px);
+                        }
+                    }
+                }
+            }
+
+            .socialLinks {
+                display: flex;
+                justify-content: center;
+                gap: 2rem;
+                margin-top: 3rem;
+
+                a {
+                    color: $color-5;
+                    font-size: 2rem;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        color: $color-4;
+                        transform: translateY(-3px);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .contact .contactContent {
+        .contactContainer .contactBox {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contact .contactContent {
+        .header {
+            padding: 2rem 0;
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .contactContainer {
+            padding: 0 1rem;
+
+            .contactBox {
+                padding: 2rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .contact .contactContent {
+        .header h1 {
+            font-size: 2rem;
+        }
+
+        .contactContainer .contactBox {
+            padding: 1.5rem;
+
+            .contactInfo .infoItem {
+                margin-bottom: 1.5rem;
+
+                i {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}
