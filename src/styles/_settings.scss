@@ -49,6 +49,7 @@ body {
     color: $black;
     background: $white;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 button {
@@ -150,17 +151,29 @@ a {
 @media screen and (max-width: 850px) {
     .homeContent, .knowledgesContent, .portfolioContent, .contactContent {
         margin-left: 0 !important;
-        width: 100%;
+        width: 100vw;            // ✅ Au lieu de 100%
+        min-height: 100vh;       // ✅ Ajouter
+        box-sizing: border-box;  // ✅ Ajouter
+        
+        &::before {
+            display: none;
+        }
     }
 }
 
 @media screen and (max-width: 580px) {
     body {
         font-size: 0.9rem;
+        overflow-x: hidden;
+        min-height: 100vh;
     }
     
     .homeContent, .knowledgesContent, .portfolioContent, .contactContent {
         padding: 1rem;
+        width: 100vw;            // ✅ Largeur complète du viewport
+        margin-left: 0;
+        min-height: 100vh;       // ✅ Hauteur complète du viewport
+        box-sizing: border-box;  
     }
 }
 

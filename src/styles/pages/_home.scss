@@ -389,48 +389,66 @@
 }
 
 @media screen and (max-width: 850px) {
-  .homeContent {
-    margin: 0 !important;
+  .home {
+    .homeContent {
+      margin: 0 !important;
+      min-height: 100vh !important;
+      
+      .content {
+        left: 5%;
+        right: 5%;
+        min-height: calc(100vh - 2rem);
+      }
+    }
   }
 
-  .home .homeContent .content {
-    left: 5%;
-    right: 5%;
+  .home .homeContent .content .hero-section {
+    .stats {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
 
-    .hero-section {
-      .stats {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-
-        .stat-item {
-          width: 100%;
-          max-width: 200px;
-        }
+      .stat-item {
+        width: 100%;
+        max-width: 200px;
       }
+    }
 
-      .quick-actions {
-        flex-direction: column;
+    .quick-actions {
+      flex-direction: column;
 
-        .action-btn {
-          text-align: center;
-          justify-content: center;
-        }
+      .action-btn {
+        text-align: center;
+        justify-content: center;
       }
+    }
 
-      .quick-contact .contact-methods .contact-item {
-        &:hover {
-          transform: translateY(-3px);
-        }
+    .quick-contact .contact-methods .contact-item {
+      &:hover {
+        transform: translateY(-3px);
       }
     }
   }
 }
 
 @media screen and (max-width: 580px) {
-  .homeContent {
-    &:after {
-      background: url('../../media/bigGates.jpg') no-repeat 60% 50%/cover !important;
+  .home {
+    .homeContent {
+      min-height: 100vh !important;
+      width: 100vw !important;
+      
+      &:after {
+        background: url('../../media/bigGates.jpg') no-repeat 60% 50%/cover !important;
+        height: 100vh !important;
+        width: 100vw !important;
+      }
+      
+      .content {
+        min-height: calc(100vh - 2rem);
+        left: 2%;
+        right: 2%;
+        top: 3%;
+      }
     }
   }
 
