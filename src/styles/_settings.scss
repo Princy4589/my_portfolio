@@ -5,21 +5,21 @@ $font-1: 'Nova Round', cursive;
 $font-2: 'Dosis', sans-serif;
 $font-3: 'Josefin Sans', sans-serif;
 
-// Colors
-$color-1: #2a1d52;
-$color-2: #6C77F4;
-$color-3: rgb(99,164,233);
-$color-4: #4FEDD2;
-$color-5: #36D0EA;
-$white: #f5f5f5;
-$black: #333;
+// Colors - Cursor Theme
+$color-1: #0a0a0a;        // Noir très profond (arrière-plan principal)
+$color-2: #1a1a1a;        // Noir foncé (éléments secondaires)
+$color-3: #2a2a2a;        // Gris foncé (bordures, séparateurs)
+$color-4: #00d4ff;        // Cyan accent (hover, actif)
+$color-5: #4a9eff;        // Bleu accent (liens, éléments interactifs)
+$white: #ffffff;          // Blanc pur
+$black: #0a0a0a;          // Noir profond
 
 // Modern Design Variables
 $borderRadius: 2px;
 $shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 $minHeight: 100vh;
-$gradientBg: linear-gradient(135deg, $color-1, darken($color-1, 15%));
-$glassEffect: rgba(255, 255, 255, 0.08);
+$gradientBg: linear-gradient(135deg, $color-1, $color-2);
+$glassEffect: rgba(255, 255, 255, 0.05);
 $transition: all 0.3s ease;
 
 // Mixins

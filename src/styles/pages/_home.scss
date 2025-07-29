@@ -1,75 +1,473 @@
 .home {
+  .homeContent {
+    background: linear-gradient(115deg, $color-1 50%, transparent 100%);
+    min-height: $minHeight;
+    width: 100%;
+    min-height: 500px;
+    border-radius: $borderRadius;
+    position: relative;
+    overflow: hidden;
+    overflow-y: auto;
 
-    .homeContent {
-      background: linear-gradient(115deg, $color-1 50%, transparent 100%);
-      min-height: $minHeight;
-      width: 100%;
-      min-height: 500px;
-      border-radius: $borderRadius;
-      position: relative;
-      overflow: hidden;
-  
-      &:after {
-        content: '';
-        position: absolute;
-        height: 100%;
-        width: inherit;
-        background: url('../../media/bigGates.jpg') no-repeat center/cover;
-        z-index: -1;
-        filter: brightness(30%);
-      }
-  
-      .content {
-        position: absolute;
-        top: 20%;
-        left: 13%;
-        font-family: $font-1;
-  
+    &:after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: inherit;
+      background: url('../../media/bigGates.jpg') no-repeat center/cover;
+      z-index: -1;
+      filter: brightness(20%);
+    }
+
+    .content {
+      position: absolute;
+      top: 5%;
+      left: 10%;
+      right: 10%;
+      font-family: $font-1;
+      padding-bottom: 3rem;
+
+      .hero-section {
+        max-width: 800px;
+
         h1 {
           font-size: 5rem;
           font-family: $font-3;
-          color: $color-5;
+          color: $white;
           text-transform: uppercase;
-          text-shadow: 3px 6px 2px $black;
+          text-shadow: 3px 6px 2px rgba($black, 0.8);
+          background: linear-gradient(45deg, $color-4, $color-5);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 1rem;
+          animation: slideInFromLeft 1s ease forwards;
         }
+
         h2 {
           font-size: 2.5rem;
-          padding: 1.5rem 0 7rem;
-          color: $color-3;
-          text-shadow: 1px 4px 1px $black;
+          color: $white;
+          text-shadow: 1px 4px 1px rgba($black, 0.6);
+          margin-bottom: 2rem;
+          animation: slideInFromLeft 1s ease forwards;
+          animation-delay: 0.2s;
+          opacity: 0;
+          animation-fill-mode: both;
         }
-        .pdf {
-          a {
-            font-size: 1.5rem;
-            background: $color-3;
-            padding: 1rem 2rem;
-            border-radius: $borderRadius;
-            box-shadow: 0 5px 1px rgb(15, 15, 15);
-            transition: 0.2s ease;
-  
+
+        .intro {
+          margin: 2rem 0;
+          animation: fadeInUp 1s ease forwards;
+          animation-delay: 0.4s;
+          opacity: 0;
+          animation-fill-mode: both;
+
+          .tagline {
+            font-size: 1.4rem;
+            color: $color-4;
+            font-style: italic;
+            margin-bottom: 1rem;
+            text-shadow: 1px 2px 1px rgba($black, 0.5);
+          }
+
+          .bio {
+            font-size: 1.1rem;
+            color: rgba($white, 0.9);
+            line-height: 1.6;
+            max-width: 600px;
+          }
+        }
+
+        .stats {
+          display: flex;
+          gap: 3rem;
+          margin: 3rem 0;
+          animation: fadeInUp 1s ease forwards;
+          animation-delay: 0.6s;
+          opacity: 0;
+          animation-fill-mode: both;
+
+          .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba($color-2, 0.6);
+            border-radius: 12px;
+            border: 1px solid rgba($color-4, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            min-width: 120px;
+
             &:hover {
-              background: $color-4;
+              transform: translateY(-5px);
+              border-color: $color-4;
+              box-shadow: 0 10px 25px rgba($color-4, 0.2);
+            }
+
+            .number {
+              display: block;
+              font-size: 2.5rem;
+              font-weight: bold;
+              color: $color-4;
+              margin-bottom: 0.5rem;
+            }
+
+            .label {
+              font-size: 0.9rem;
+              color: rgba($white, 0.8);
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+            }
+          }
+        }
+
+        .skills-preview {
+          margin: 3rem 0;
+          animation: fadeInUp 1s ease forwards;
+          animation-delay: 0.8s;
+          opacity: 0;
+          animation-fill-mode: both;
+
+          h3 {
+            color: $white;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+          }
+
+          .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+
+            .tech-item {
+              background: rgba($color-5, 0.1);
+              color: $color-5;
+              padding: 0.5rem 1rem;
+              border-radius: 25px;
+              font-size: 0.9rem;
+              border: 1px solid rgba($color-5, 0.3);
+              transition: all 0.3s ease;
+
+              &:hover {
+                background: $color-5;
+                color: $color-1;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba($color-5, 0.3);
+              }
+            }
+          }
+        }
+
+        .availability {
+          margin: 2rem 0;
+          animation: fadeInUp 1s ease forwards;
+          animation-delay: 1s;
+          opacity: 0;
+          animation-fill-mode: both;
+
+          .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 1.5rem;
+            background: rgba($color-2, 0.6);
+            border-radius: 30px;
+            border: 1px solid rgba($color-4, 0.3);
+            backdrop-filter: blur(10px);
+            display: inline-flex;
+
+            .status-dot {
+              width: 12px;
+              height: 12px;
+              border-radius: 50%;
+              
+              &.available {
+                background: #00ff88;
+                box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+                animation: pulse 2s infinite;
+              }
+            }
+
+            span {
+              color: rgba($white, 0.9);
+              font-size: 0.95rem;
+            }
+          }
+        }
+
+        .quick-actions {
+          display: flex;
+          gap: 1rem;
+          margin: 3rem 0;
+          flex-wrap: wrap;
+          animation: fadeInUp 1s ease forwards;
+          animation-delay: 1.2s;
+          opacity: 0;
+          animation-fill-mode: both;
+
+          .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+
+            i {
+              font-size: 0.9rem;
+            }
+
+            &:before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: -100%;
+              width: 100%;
+              height: 100%;
+              transition: left 0.3s ease;
+              z-index: -1;
+            }
+
+            &.primary {
+              background: linear-gradient(135deg, $color-5, $color-4);
+              color: $white;
+
+              &:before {
+                background: linear-gradient(135deg, $color-4, $color-5);
+              }
+
+              &:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 25px rgba($color-4, 0.4);
+
+                &:before {
+                  left: 0;
+                }
+              }
+            }
+
+            &.secondary {
+              background: transparent;
+              color: $color-4;
+              border: 2px solid $color-4;
+
+              &:before {
+                background: $color-4;
+              }
+
+              &:hover {
+                color: $color-1;
+                transform: translateY(-3px);
+
+                &:before {
+                  left: 0;
+                }
+              }
+            }
+
+            &.tertiary {
+              background: rgba($color-2, 0.6);
+              color: $white;
+              border: 1px solid rgba($color-5, 0.3);
+
+              &:before {
+                background: rgba($color-5, 0.2);
+              }
+
+              &:hover {
+                transform: translateY(-3px);
+                border-color: $color-5;
+
+                &:before {
+                  left: 0;
+                }
+              }
+            }
+          }
+        }
+
+        .quick-contact {
+          margin: 4rem 0 2rem;
+          animation: fadeInUp 1s ease forwards;
+          animation-delay: 1.4s;
+          opacity: 0;
+          animation-fill-mode: both;
+
+          h3 {
+            color: $white;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+          }
+
+          .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+
+            .contact-item {
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              padding: 1rem 1.5rem;
+              background: rgba($color-2, 0.5);
+              border-radius: 10px;
+              color: $white;
+              text-decoration: none;
+              transition: all 0.3s ease;
+              border: 1px solid rgba($color-4, 0.2);
+
+              i {
+                font-size: 1.2rem;
+                color: $color-4;
+                width: 20px;
+              }
+
+              &:hover {
+                background: rgba($color-4, 0.1);
+                border-color: $color-4;
+                transform: translateX(10px);
+              }
             }
           }
         }
       }
     }
   }
-  @media screen and (max-width: 850px){
-    .homeContent {
-      margin: 0 !important;
+}
+
+// Animations
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  }
+}
+
+// Media Queries
+@media screen and (max-width: 1200px) {
+  .home .homeContent .content .hero-section {
+    .stats {
+      gap: 2rem;
+      
+      .stat-item {
+        min-width: 100px;
+        padding: 1rem;
+      }
     }
   }
-  @media screen and (max-width:580px){
-    .homeContent {
-      &:after {
+}
+
+@media screen and (max-width: 850px) {
+  .homeContent {
+    margin: 0 !important;
+  }
+
+  .home .homeContent .content {
+    left: 5%;
+    right: 5%;
+
+    .hero-section {
+      .stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        .stat-item {
+          width: 100%;
+          max-width: 200px;
+        }
+      }
+
+      .quick-actions {
+        flex-direction: column;
+
+        .action-btn {
+          text-align: center;
+          justify-content: center;
+        }
+      }
+
+      .quick-contact .contact-methods .contact-item {
+        &:hover {
+          transform: translateY(-3px);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .homeContent {
+    &:after {
       background: url('../../media/bigGates.jpg') no-repeat 60% 50%/cover !important;
-      }
-      h1 {
-        font-size: 3rem !important;
-      }
-      h2 {
-        font-size: 1.8rem !important;
-      }
     }
   }
+
+  .home .homeContent .content .hero-section {
+    h1 {
+      font-size: 3rem !important;
+    }
+    
+    h2 {
+      font-size: 1.8rem !important;
+    }
+
+    .intro {
+      .tagline {
+        font-size: 1.1rem;
+      }
+
+      .bio {
+        font-size: 1rem;
+      }
+    }
+
+    .stats {
+      .stat-item {
+        .number {
+          font-size: 2rem;
+        }
+      }
+    }
+
+    .skills-preview .tech-stack {
+      justify-content: center;
+    }
+
+    .quick-actions .action-btn {
+      padding: 0.8rem 1.5rem;
+      font-size: 0.9rem;
+    }
+  }
+}
