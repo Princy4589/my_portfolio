@@ -1,5 +1,35 @@
 export const portfolioData = [
-  // Projets entreprise 2025 (en cours)
+  {
+    id: 6,
+    name: "Acheter-Louer.fr — refonte v6",
+    category: "Projet Entreprise",
+    year: "2026",
+    yearSort: 2026,
+    monthSort: 1,
+    duration: "En cours",
+    status: "En cours",
+    context:
+      "Refonte du portail immobilier acheter-louer.fr, de la v5 vers la v6 — Tridisphère Production",
+    company: "Tridisphère Production",
+    role: "Développeur Fullstack",
+    languages: ["Next.js", "NestJS"],
+    languagesIcons: ["fab fa-react", "fas fa-layer-group"],
+    info: "Mise en place de la v6 d'acheter-louer.fr, portail d'annonces immobilières pour acheter, vendre ou louer un bien en France. La v6 remplace la v5 et est déjà accessible en ligne.",
+    achievements: [
+      "Refonte du site v5 vers la v6",
+      "Front en Next.js et API en NestJS",
+      "Portail déjà en ligne sur www.acheter-louer.fr",
+    ],
+    links: {
+      demo: "https://www.acheter-louer.fr/",
+      github: null,
+    },
+    isPublic: true,
+    confidentialNote:
+      "Projet d'entreprise en cours — le détail de l'architecture est disponible en entretien",
+    inProgress: true,
+  },
+
   {
     id: 1,
     name: "Soltreasurycorp.com",
@@ -7,9 +37,9 @@ export const portfolioData = [
     year: "2025",
     yearSort: 2025,
     monthSort: 6, // Commencé en mars
-    duration: "En cours (1 mois)",
-    status: "En cours",
-    context: "Développement en équipe Agile de 2 personnes - Projet en cours",
+    duration: "Terminé",
+    status: "Terminé",
+    context: "Développement en équipe Agile de 2 personnes ",
     company: "Tridisphère Production",
     role: "Développeur Fullstack",
     languages: ["React", "NestJS"],
@@ -90,8 +120,8 @@ export const portfolioData = [
     year: "2025",
     yearSort: 2025,
     monthSort: 1, // Commencé en janvier
-    duration: "En cours (5 mois)",
-    status: "En cours",
+    duration: "Terminé",
+    status: "Terminé",
     context:
       "Application web pour la gestion des mandats - Tridisphère Production",
     company: "Tridisphère Production",
@@ -196,3 +226,10 @@ export const portfolioData = [
     inProgress: false,
   },
 ];
+
+export function byRecent(list = portfolioData) {
+  return [...list].sort((a, b) => {
+    if (a.yearSort !== b.yearSort) return b.yearSort - a.yearSort;
+    return (b.monthSort || 0) - (a.monthSort || 0);
+  });
+}

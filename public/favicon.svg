@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#07111f"/>
+  <polygon points="32,6 56,18 56,42 32,58 8,42 8,18" fill="#6d002c" stroke="#e4c36a" stroke-width="2"/>
+  <text x="32" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#f6e7b8">PR</text>
+</svg>
