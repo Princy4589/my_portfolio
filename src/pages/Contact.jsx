@@ -38,29 +38,38 @@ export default function Contact() {
       <div className="contact-grid">
         <aside className="contact-card">
           <p className="eyebrow">Coordonnées</p>
-          <h2>{player.city}</h2>
-          <p>{player.nation}</p>
-          <ul>
-            <li>
+          <p className="contact-place">
+            <strong>{player.city}</strong>
+            <span>{player.nation}</span>
+          </p>
+          <nav className="contact-links" aria-label="Coordonnées">
+            <div className="contact-line">
+              <a href={`tel:${player.phone}`} aria-label="Appeler">
+                <i className="fas fa-phone" aria-hidden="true" />
+              </a>
+              <a
+                href={`https://wa.me/${player.phone.replace(/\D/g, "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+              >
+                <i className="fab fa-whatsapp" aria-hidden="true" />
+              </a>
               <a href={`tel:${player.phone}`}>{player.phoneDisplay}</a>
-            </li>
-            <li>
-              <a href={`mailto:${player.email}`}>{player.email}</a>
-            </li>
-            <li>
-              <a href={player.linkedin} target="_blank" rel="noopener noreferrer">
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <a href={player.github} target="_blank" rel="noopener noreferrer">
-                GitHub
-              </a>
-            </li>
-          </ul>
-          <a className="btn btn-gold" href={player.cv} target="_blank" rel="noopener noreferrer">
-            Télécharger le CV
-          </a>
+            </div>
+            <a href={`mailto:${player.email}`}>
+              <i className="fas fa-envelope" aria-hidden="true" />
+              <span>{player.email}</span>
+            </a>
+            <a href={player.linkedin} target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-linkedin-in" aria-hidden="true" />
+              <span>LinkedIn</span>
+            </a>
+            <a href={player.github} target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-github" aria-hidden="true" />
+              <span>GitHub</span>
+            </a>
+          </nav>
         </aside>
 
         <form className="contact-form" onSubmit={onSubmit}>

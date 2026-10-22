@@ -8,6 +8,13 @@
       name="description"
       content="Portfolio de Princy Rilan, développeur fullstack JavaScript. React, NestJS, projets et contact."
     />
+    <script>
+      try {
+        if (localStorage.getItem("fiche-theme") === "madrid") {
+          document.documentElement.dataset.theme = "madrid";
+        }
+      } catch (e) {}
+    </script>
     <title>Princy Rilan — Développeur fullstack</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

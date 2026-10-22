@@ -7,6 +7,13 @@ import { player } from "../data/player";
 
 const companies = new Set(portfolioData.map((item) => item.company).filter(Boolean)).size;
 const latest = byRecent().slice(0, 3);
+const ribbon = ["React", "NestJS", "Next.js", "Node", "IA générative", "MongoDB", "Docker"];
+
+const actions = [
+  { href: "cv", label: "Télécharger le CV", external: true },
+  { href: "/carriere", label: "Voir les projets" },
+  { href: "/contact", label: "Écrire un message" },
+];
 
 export default function Home() {
   return (
@@ -21,21 +28,15 @@ export default function Home() {
               <span>{player.firstName}</span>
               <span>{player.lastName}</span>
             </h1>
-            <p className="position-line">{player.role}</p>
-            <p className="tagline">{player.tagline}</p>
-            <p className="bio">{player.bio}</p>
-
-            <div className="hero-actions">
-              <a className="btn btn-gold" href={player.cv} target="_blank" rel="noopener noreferrer">
-                Télécharger le CV
-              </a>
-              <Link className="btn btn-ghost" to="/carriere">
-                Carrière
-              </Link>
-              <Link className="btn btn-ghost" to="/contact">
-                Me contacter
-              </Link>
-            </div>
+            <p className="hero-facts">
+              <span>{player.role}</span>
+              <span>{player.city}</span>
+            </p>
+            <p className="statement">
+              {player.tagline.split(/(?<=\.)\s+/).map((line) => (
+                <span key={line}>{line}</span>
+              ))}
+            </p>
 
             <ul className="quick-stats">
               <li>
@@ -51,6 +52,31 @@ export default function Home() {
                 <span>entreprises</span>
               </li>
             </ul>
+
+            <nav className="hero-menu" aria-label="Suite">
+              {actions.map((action, index) => {
+                const order = String(index + 1).padStart(2, "0");
+                const inner = (
+                  <>
+                    <span>{order}</span>
+                    <strong>{action.label}</strong>
+                    <i aria-hidden="true">→</i>
+                  </>
+                );
+                if (action.external) {
+                  return (
+                    <a key={action.label} href={player.cv} target="_blank" rel="noopener noreferrer">
+                      {inner}
+                    </a>
+                  );
+                }
+                return (
+                  <Link key={action.label} to={action.href}>
+                    {inner}
+                  </Link>
+                );
+              })}
+            </nav>
           </header>
 
           <div className="board">
@@ -63,10 +89,18 @@ export default function Home() {
         </div>
       </div>
 
+      <div className="ticker" aria-hidden="true">
+        <div>
+          {[...ribbon, ...ribbon].map((item, index) => (
+            <span key={`${item}-${index}`}>{item}</span>
+          ))}
+        </div>
+      </div>
+
       <div className="lower">
         <section className="playstyles" aria-label="Façon de travailler">
           <p className="eyebrow">Méthode</p>
-          <h2>Façon de travailler</h2>
+          <h2>Quatre réflexes</h2>
           <ul>
             {player.practices.map((style) => (
               <li key={style.name}>
@@ -84,23 +118,25 @@ export default function Home() {
       <section className="teasers" aria-label="Projets récents">
         <div className="section-row">
           <div>
-            <p className="eyebrow">Carrière</p>
-            <h2>Projets récents</h2>
+            <p className="eyebrow">Projets</p>
+            <h2>En ce moment</h2>
           </div>
-          <Link className="btn btn-ghost" to="/carriere">
-            Voir tout
+          <Link className="text-link" to="/carriere">
+            Tout voir
           </Link>
         </div>
-        <ul>
+        <ul className="reel">
           {latest.map((project) => (
             <li key={project.id}>
               <Link to={`/carriere#match-${project.id}`}>
+                <span className="reel-year">{project.year}</span>
+                <span className="reel-copy">
+                  <strong>{project.name}</strong>
+                  <em>{project.company || project.category}</em>
+                </span>
                 <span className={`bug ${project.status === "En cours" ? "is-live" : ""}`}>
                   {project.status === "En cours" ? "En cours" : "Terminé"}
                 </span>
-                <span className="season">{project.year}</span>
-                <strong>{project.name}</strong>
-                <em>{project.company || project.category}</em>
               </Link>
             </li>
           ))}

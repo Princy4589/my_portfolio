@@ -126,18 +126,20 @@ export const portfolioData = [
       "Application web pour la gestion des mandats - Tridisphère Production",
     company: "Tridisphère Production",
     role: "Développeur Fullstack",
-    languages: ["React", "NestJS", "MongoDB", "Express"],
+    languages: ["React", "NestJS", "MongoDB", "Express", "Stripe"],
     languagesIcons: [
       "fab fa-react",
       "fab fa-nestjs",
       "fab fa-mongodb",
       "fab fa-express",
+      "fab fa-stripe",
     ],
     info: "Dévéloppement d'une application web permettant aux professionnels de l'immobilier de suivre les annonces des vendeurs,bailleurs.  - Tridisphère Production",
     achievements: [
       "Interface utilisateur moderne",
       "Responsive design",
       "Gestion de paiement avec Mercanet",
+      "Intégration de Stripe",
     ],
     technologies: [
       "React Native",

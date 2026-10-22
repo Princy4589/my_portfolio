@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { meterTone } from "../data/player";
-
-const views = [
-  { id: "face", label: "Visage" },
-  { id: "portrait", label: "Portrait" },
-];
+import RecruitModal from "./RecruitModal";
 
 const finePointer =
   typeof window !== "undefined" &&
@@ -13,9 +9,12 @@ const finePointer =
 
 export default function PlayerCard({ player }) {
   const [photoOk, setPhotoOk] = useState(true);
-  const [view, setView] = useState("face");
+  const [recruitOpen, setRecruitOpen] = useState(false);
   const left = player.attributes.slice(0, 3);
   const right = player.attributes.slice(3);
+  const overall = Math.round(
+    player.attributes.reduce((sum, attr) => sum + attr.value, 0) / player.attributes.length
+  );
 
   const onMove = (event) => {
     const card = event.currentTarget;
@@ -37,18 +36,19 @@ export default function PlayerCard({ player }) {
       onMouseMove={finePointer ? onMove : undefined}
       onMouseLeave={finePointer ? onLeave : undefined}
     >
+      <div className="card-face">
       <div className="card-stripe" aria-hidden="true" />
       <div className="card-top">
         <div>
-          <p className="ovr">{player.experienceLabel}</p>
-          <p className="pos">ans</p>
+          <p className="ovr">{overall}</p>
+          <p className="pos">DEV</p>
         </div>
         <div className="card-side">
           <span className="tier">Fullstack</span>
         </div>
       </div>
 
-      <div className={`photo-frame is-${view}`}>
+      <div className="photo-frame is-face">
         {photoOk ? (
           <div className="shot">
             <img
@@ -62,18 +62,6 @@ export default function PlayerCard({ player }) {
         ) : (
           <span className="initials">PR</span>
         )}
-      </div>
-      <div className="view-toggle" role="group" aria-label="Cadrage de la photo">
-        {views.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            aria-pressed={view === item.id}
-            onClick={() => setView(item.id)}
-          >
-            {item.label}
-          </button>
-        ))}
       </div>
 
       <p className="card-name">
@@ -100,6 +88,16 @@ export default function PlayerCard({ player }) {
         ))}
       </div>
       <p className="card-club">{player.club}</p>
+      <button
+        type="button"
+        className="recruit-prompt"
+        onClick={() => setRecruitOpen(true)}
+      >
+        <span className="xbox-a" aria-hidden="true">A</span>
+        Recruter
+      </button>
+      </div>
+      {recruitOpen && <RecruitModal onClose={() => setRecruitOpen(false)} />}
     </article>
   );
 }

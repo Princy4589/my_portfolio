@@ -45,7 +45,7 @@ export default function Portfolio() {
     <div className="page">
       <header className="page-head">
         <p className="eyebrow">Expériences</p>
-        <h1>Carrière</h1>
+        <h1>Projets</h1>
         <p>Les projets, du plus récent au plus ancien. Ouvrez une carte pour le détail.</p>
       </header>
 
@@ -67,24 +67,29 @@ export default function Portfolio() {
         {filtered.length} projet{filtered.length > 1 ? "s" : ""}
       </p>
 
-      <div className="matches">
+      <div className="matches" key={activeCategory}>
         {filtered.map((project) => {
           const open = openId === project.id;
           const live = project.status === "En cours";
           const github = codeLink(project.links?.github);
           return (
-            <details key={project.id} id={`match-${project.id}`} className="match" open={open}>
+            <details
+              key={project.id}
+              id={`match-${project.id}`}
+              className={`match${open ? " is-open" : ""}`}
+              open={open}
+            >
               <summary
                 onClick={(event) => {
                   event.preventDefault();
                   setOpenId(open ? null : project.id);
                 }}
               >
-                <span className={`bug ${live ? "is-live" : ""}`}>
-                  {live ? "En cours" : "Terminé"}
-                </span>
                 <span className="season">{project.year}</span>
                 <span className="match-title">
+                  <span className={`bug ${live ? "is-live" : ""}`}>
+                    {live ? "En cours" : "Terminé"}
+                  </span>
                   <strong>{project.name}</strong>
                   <em>
                     {[project.company || project.category, project.duration]

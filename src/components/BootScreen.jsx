@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { player } from "../data/player";
 import Crest from "./Crest";
 
 export default function BootScreen({ onDone }) {
   const [progress, setProgress] = useState(0);
+  const [leaving, setLeaving] = useState(false);
   const onDoneRef = useRef(onDone);
   const finished = useRef(false);
   onDoneRef.current = onDone;
@@ -10,8 +12,9 @@ export default function BootScreen({ onDone }) {
   const finish = () => {
     if (finished.current) return;
     finished.current = true;
+    setLeaving(true);
     try {
-      sessionStorage.setItem("fiche-boot", "1");
+      sessionStorage.setItem("fiche-kickoff", "1");
     } catch {
       /* navigation privée : on entre quand même */
     }
@@ -22,7 +25,7 @@ export default function BootScreen({ onDone }) {
     let frame = 0;
     let timer = 0;
     const start = performance.now();
-    const duration = 1500;
+    const duration = 2100;
 
     const tick = (now) => {
       const ratio = Math.min(1, (now - start) / duration);
@@ -30,7 +33,7 @@ export default function BootScreen({ onDone }) {
       if (ratio < 1) {
         frame = requestAnimationFrame(tick);
       } else {
-        timer = window.setTimeout(finish, 320);
+        timer = window.setTimeout(finish, 180);
       }
     };
 
@@ -48,13 +51,25 @@ export default function BootScreen({ onDone }) {
   }, []);
 
   return (
-    <button className="boot" type="button" onClick={finish}>
-      <Crest size={96} />
-      <p className="boot-kicker">Portfolio</p>
+    <button
+      className={`boot${leaving ? " is-out" : ""}`}
+      type="button"
+      onClick={finish}
+      aria-label="Passer l'introduction"
+    >
+      <span className="boot-glow" aria-hidden="true" />
+      <span className="boot-ring" aria-hidden="true" />
+      <span className="boot-ring boot-ring-late" aria-hidden="true" />
+      <Crest size={84} />
+      <p className="boot-kicker">Fiche joueur</p>
+      <p className="boot-name">
+        <span>{player.firstName}</span>
+        <span>{player.lastName}</span>
+      </p>
+      <p className="boot-role">{player.role}</p>
       <p className="boot-count" aria-hidden="true">
         {progress}
       </p>
-      <p className="boot-caption">Chargement du portfolio</p>
       <span
         className="boot-bar"
         role="progressbar"

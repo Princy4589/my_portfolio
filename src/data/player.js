@@ -14,19 +14,19 @@ export const player = {
   github: "https://github.com/princy-andrianantenaina",
   cv: "/media/CV-Princy.pdf",
   photo: "/media/Princy-phot.png",
-  tagline: "Des interfaces nettes, des API solides, et l'IA générative comme accélérateur.",
-  bio: "Développeur fullstack chez Tridisphère Production. J'interviens sur des produits web en React et NestJS, de l'interface jusqu'à l'API, en équipe. L'IA générative sert à prototyper plus vite ; ce qui part en production est relu.",
+  tagline: "J'écris l'interface et le service. L'IA accélère, la relecture décide.",
+  bio: "Fullstack chez Tridisphère Production, à Antananarivo. React pour l'interface, NestJS pour le service.",
   attributes: [
     {
       key: "Front",
       label: "Front",
-      value: 86,
+      value: 82,
       hint: "React, interfaces, détail visuel",
     },
     {
       key: "API",
       label: "API",
-      value: 83,
+      value: 87,
       hint: "NestJS, Node, services",
     },
     {
@@ -38,7 +38,7 @@ export const player = {
     {
       key: "Tests",
       label: "Tests",
-      value: 76,
+      value: 72,
       hint: "Fiabilité et cas limites",
     },
     {
@@ -58,22 +58,22 @@ export const player = {
     {
       icon: "fas fa-laptop-code",
       name: "Interfaces",
-      detail: "React, écrans clairs, comportement prévisible.",
+      detail: "React, du premier écran jusqu'au détail qui se voit.",
     },
     {
       icon: "fas fa-server",
       name: "APIs",
-      detail: "NestJS et Node, un contrat net entre l'écran et les données.",
+      detail: "NestJS et Node. Un contrat clair entre l'écran et les données.",
     },
     {
       icon: "fas fa-brain",
       name: "IA générative",
-      detail: "Recherche et prototype plus rapides, puis relecture avant livraison.",
+      detail: "Je prototype plus vite, puis je relis avant de livrer.",
     },
     {
       icon: "fas fa-users",
       name: "Équipe",
-      detail: "Petits effectifs, agile, transmission au fil des revues.",
+      detail: "Petites équipes, agile, relecture partagée.",
     },
   ],
 };
